@@ -1,0 +1,24 @@
+{
+  "name": "ts-logger",
+  "version": "0.0.1",
+  "description": "Logger Module",
+  "main": "js/index.js",
+  "typings": "js/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebr8041/ts-logger.git"
+  },
+  "keywords": [
+    "typescript",
+    "atom"
+  ],
+  "author": "brodersen.sebastian@googlemail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sebr8041/ts-logger/issues"
+  },
+  "homepage": "https://github.com/sebr8041/ts-logger.git#readme"
+}
