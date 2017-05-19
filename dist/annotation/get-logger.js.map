@@ -1,0 +1,1 @@
+{"version":3,"file":"get-logger.js","sourceRoot":"","sources":["../../ts/annotation/get-logger.ts"],"names":[],"mappings":";;AACA,4DAA0D;AAC1D;;GAEG;AACH;IACI,MAAM,CAAC,UAAU,MAAW,EAAE,YAAoB;QAC9C,mDAAmD;QACnD,MAAM,CAAC,YAAY,CAAC,GAAG,8BAAa,CAAC,GAAG,CAAC,MAAM,CAAC,WAAW,CAAC,IAAI,CAAC,CAAC;IACtE,CAAC,CAAA;AACL,CAAC;AALD,8BAKC"}

@@ -1,6 +1,6 @@
 {
-  "name": "ts-logger",
-  "version": "0.0.1",
+  "name": "ts-client-logger",
+  "version": "1.0.0",
   "description": "Logger Module",
   "main": "js/index.js",
   "typings": "js/index",
