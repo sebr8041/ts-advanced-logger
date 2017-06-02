@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var logger_factory_1 = require("../factory/logger-factory");
 /**
  * anno to load logger from LoggerFactory into instance-field.
@@ -11,4 +11,3 @@ function GetLogger() {
     };
 }
 exports.GetLogger = GetLogger;
-//# sourceMappingURL=get-logger.js.map

@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var LoggerFactoryException = (function (_super) {
     __extends(LoggerFactoryException, _super);
     function LoggerFactoryException() {
@@ -18,4 +18,3 @@ var LoggerFactoryException = (function (_super) {
     return LoggerFactoryException;
 }(Error));
 exports.LoggerFactoryException = LoggerFactoryException;
-//# sourceMappingURL=logger-factory-exception.js.map

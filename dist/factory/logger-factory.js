@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var logger_1 = require("../service/logger");
 var logger_factory_exception_1 = require("./logger-factory-exception");
 var CONSOLE_DEBUG_METHOD = console["debug"] ? "debug" : "log";
@@ -21,4 +21,3 @@ var LoggerFactory = (function () {
 }());
 LoggerFactory.logger = null;
 exports.LoggerFactory = LoggerFactory;
-//# sourceMappingURL=logger-factory.js.map

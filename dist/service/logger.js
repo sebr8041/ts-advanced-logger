@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var CONSOLE_DEBUG_METHOD = console["debug"] ? "debug" : "log";
 var Logger = (function () {
     function Logger() {
@@ -42,4 +42,3 @@ var Logger = (function () {
     return Logger;
 }());
 exports.Logger = Logger;
-//# sourceMappingURL=logger.js.map

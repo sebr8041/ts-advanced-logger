@@ -5,7 +5,11 @@
   "main": "js/index.js",
   "typings": "js/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "tslint ./ts/**/*.ts",
+    "compile": "./node_modules/.bin/tsc --experimentalDecorators --outDir ./dist  ./ts/main/*.ts",
+    "compile-tests": "./node_modules/.bin/tsc --experimentalDecorators --outDir ./test-dist  ./ts/test/*.ts",
+    "pretest": "npm run compile-tests",
+    "test": "mocha --recursive ./test-dist/*"
   },
   "repository": {
     "type": "git",
@@ -20,5 +24,20 @@
   "bugs": {
     "url": "https://github.com/sebr8041/ts-logger/issues"
   },
-  "homepage": "https://github.com/sebr8041/ts-logger.git#readme"
+  "homepage": "https://github.com/sebr8041/ts-logger.git#readme",
+  "devDependencies": {
+    "@types/chai": "3.4.35",
+    "@types/mocha": "2.2.40",
+    "@types/node": "7.0.12",
+    "chai": "3.5.0",
+    "jison": "0.4.17",
+    "mkdirp": "0.5.1",
+    "mocha": "3.2.0",
+    "mocha-typescript": "1.0.23",
+    "tslint": "5.0.0",
+    "typescript": "2.3.4"
+  },
+  "dependencies": {
+    "source-map-support": "0.4.14"
+  }
 }
