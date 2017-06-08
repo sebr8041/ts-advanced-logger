@@ -6,8 +6,8 @@
   "typings": "js/index",
   "scripts": {
     "lint": "tslint ./ts/**/*.ts",
-    "compile": "./node_modules/.bin/tsc --experimentalDecorators --outDir ./dist  ./ts/main/*.ts",
-    "compile-tests": "./node_modules/.bin/tsc --experimentalDecorators --outDir ./test-dist  ./ts/test/**/*.ts",
+    "compile": "./node_modules/.bin/tsc --target ES5 --experimentalDecorators --outDir ./dist  ./ts/main/*.ts",
+    "compile-tests": "./node_modules/.bin/tsc --target ES5 --experimentalDecorators --outDir ./test-dist  ./ts/test/**/*.ts",
     "pretest": "npm run compile-tests",
     "test": "mocha --recursive ./test-dist/**"
   },
