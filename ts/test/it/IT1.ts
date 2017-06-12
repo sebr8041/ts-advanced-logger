@@ -119,6 +119,17 @@ class MyClassForRV {
         assert.equal(10, result)
     }
 
+    @test public "Method called using batch"() {
+        let myClass = new MyClassForRV()
+
+        let result = myClass.sumUp(1, 2)
+        myClass.sumUp(3, 4)
+        myClass.sumUp(5, 6)
+
+
+        assert.equal(3, result)
+    }
+
     @test public "Method called RVMethod void"() {
         let myClass = new MyClassForRV()
 
