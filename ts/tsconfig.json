@@ -2,12 +2,11 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "target": "es5",
     "module": "commonjs",
     "removeComments": false,
     "sourceMap": true,
-    "outDir": "../dist/",
+    "outDir": "./dist",
     "declaration": true
   },
   "filesGlob": [
