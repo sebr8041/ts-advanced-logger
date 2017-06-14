@@ -1,9 +1,9 @@
 {
   "name": "ts-advanced-logger",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Advanced Logger Module",
-  "main": "js/index.js",
-  "typings": "js/index",
+  "main": "dist/index.js",
+  "typings": "dist/index",
   "scripts": {
     "lint": "tslint ./ts/**/*.ts",
     "compile": "./node_modules/.bin/tsc --target ES5 --experimentalDecorators --outDir ./dist  ./ts/main/*.ts",
