@@ -1,22 +1,27 @@
 {
-  "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es5",
-    "module": "commonjs",
-    "removeComments": false,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "declaration": true
-  },
-  "filesGlob": [
-    "**/*.ts",
-    "!node_modules/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "typings/global",
-    "typings/global.d.ts"
-  ],
-  "compileOnSave": true
+    // "version": "1.5.0-alpha",
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "declaration": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "../js",
+        "sourceMap": true
+    },
+    "include": [
+        "./main/**/*.ts",
+        "!./**/*.d.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "typings/global",
+        "typings/global.d.ts"
+    ]
 }
