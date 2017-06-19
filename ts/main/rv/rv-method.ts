@@ -1,8 +1,9 @@
-import {IMethodObserver, ObserveMethod} from "../annotation/method-anno"
+import {IMethodObserver, ObserveMethod} from "../annotation/observe-method"
 import {GetLogger} from "../annotation/get-logger"
 import {ILogger} from "../service/i-logger"
 import {RVConfig} from "../config/config"
 import * as $ from "jquery";
+import {XMLHttpRequest} from 'xmlhttprequest'
 
 export class RVLogger implements ILogger {
     error(message?: any, ...optionalParams: any[]) {
@@ -83,7 +84,7 @@ class RVMethodObserver implements IMethodObserver {
     }
 
     postToServer(message: string): void {
-        var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+        //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         let r = new XMLHttpRequest()
         r.open("POST", RVConfig.SERVER_ENDPOINT, true)
         r.setRequestHeader("Content-type", "application/json")
