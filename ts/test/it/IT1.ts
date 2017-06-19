@@ -9,7 +9,6 @@ import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
 import { ObserveMethod } from "../../main/annotation/method-anno";
 import { RVMethod, RVLogger } from "../../main/rv/rv-method";
-import {bas} from 'ts-npm-module';
 
 class MyLogger implements ILogger {
     public a: number
