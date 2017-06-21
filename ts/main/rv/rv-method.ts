@@ -1,9 +1,8 @@
-import {IMethodObserver, ObserveMethod} from "../annotation/observe-method"
-import {GetLogger} from "../annotation/get-logger"
-import {ILogger} from "../service/i-logger"
-import {RVConfig} from "../config/config"
+import { IMethodObserver, ObserveMethod } from "../annotation/observe-method"
+import { GetLogger } from "../annotation/get-logger"
+import { ILogger } from "../service/i-logger"
+import { RVConfig } from "../config/config"
 import * as $ from "jquery";
-import {XMLHttpRequest} from 'xmlhttprequest'
 
 export class RVLogger implements ILogger {
     error(message?: any, ...optionalParams: any[]) {
@@ -34,7 +33,7 @@ class RVMethodObserver implements IMethodObserver {
 
     static clientId: string = null
     static logNumber: number = 0
-    static buffer:any[] = []
+    static buffer: any[] = []
 
     private arguments: string = ""
     private result: string = ""
@@ -75,7 +74,7 @@ class RVMethodObserver implements IMethodObserver {
         this.logger.debug(JSON.stringify(result))
         //RVMethodObserver.buffer.push(JSON.stringify(result))
         RVMethodObserver.buffer.push(result)
-        if(RVMethodObserver.buffer.length >= RVConfig.BATCH_SIZE) {
+        if (RVMethodObserver.buffer.length >= RVConfig.BATCH_SIZE) {
             console.log("send A", JSON.stringify(RVMethodObserver.buffer))
             console.log("send B", RVMethodObserver.buffer)
             this.postToServer(JSON.stringify(RVMethodObserver.buffer))
@@ -85,7 +84,12 @@ class RVMethodObserver implements IMethodObserver {
 
     postToServer(message: string): void {
         //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-        let r = new XMLHttpRequest()
+        let r
+        if ((<any>window).XMLHttpRequest) {
+            r = new XMLHttpRequest();
+        } else {
+            r = new ActiveXObject("Microsoft.XMLHTTP");
+        }
         r.open("POST", RVConfig.SERVER_ENDPOINT, true)
         r.setRequestHeader("Content-type", "application/json")
         r.send(message)

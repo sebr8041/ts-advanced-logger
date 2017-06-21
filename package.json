@@ -9,7 +9,7 @@
     "compile": "./node_modules/.bin/tsc -p ./ts/ ",
     "compile-tests": "./node_modules/.bin/tsc --target ES5 --experimentalDecorators --outDir ./js-test  ./ts/test/**/*.ts",
     "pretest": "npm run compile-tests",
-    "test": "mocha --recursive ./js-test/**",
+    "test": "mocha -r jsdom-global/register --recursive ./js-test/**",
     "build": "npm run compile",
     "prepublish": "npm run compile",
     "tsc": "npm run compile"
@@ -35,6 +35,9 @@
     "@types/node": "7.0.12",
     "chai": "3.5.0",
     "jison": "0.4.17",
+    "jquery": "^3.2.1",
+    "jsdom": "11.0.0",
+    "jsdom-global": "3.0.2",
     "mkdirp": "0.5.1",
     "mocha": "3.2.0",
     "mocha-typescript": "1.0.23",
