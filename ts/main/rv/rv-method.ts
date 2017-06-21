@@ -36,8 +36,8 @@ class RVMethodObserver implements IMethodObserver {
     static buffer: any[] = []
     static registered:boolean = false
 
-    private arguments: string = ""
-    private result: string = ""
+    private arguments: any[] = []
+    private result: any = ""
     private startTime: number = 0
     private executionTimeMillis = 0
     private methodName: string = ""
@@ -58,17 +58,15 @@ class RVMethodObserver implements IMethodObserver {
     }
 
     methodCalled(that, ...args: any[]): void {
-        let argObjects: any[] = args[0]
-
-        this.arguments = argObjects.map((obj) => {
-            return JSON.stringify(obj)
-        }).join(", ")
+        this.arguments = args[0]
         this.startTime = new Date().getTime()
     }
 
     methodReturns(that, ...args: any[]): void {
         this.executionTimeMillis = new Date().getTime() - this.startTime
-        this.result = args.join(", ")
+        if(args[0]) {
+            this.result = args[0]
+        }
         this.log()
     }
 
@@ -91,7 +89,6 @@ class RVMethodObserver implements IMethodObserver {
             executionTimeMS: this.executionTimeMillis
         }
         this.logger.debug(JSON.stringify(result))
-        //RVMethodObserver.buffer.push(JSON.stringify(result))
         RVMethodObserver.buffer.push(result)
         if (RVMethodObserver.buffer.length >= RVConfig.BATCH_SIZE) {
             console.log("send A", JSON.stringify(RVMethodObserver.buffer))
@@ -106,7 +103,6 @@ class RVMethodObserver implements IMethodObserver {
     }
 
     postToServer(message: string): void {
-        //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         let r
         if ((<any>window).XMLHttpRequest) {
             r = new XMLHttpRequest();

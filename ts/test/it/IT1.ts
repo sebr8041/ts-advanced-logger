@@ -74,6 +74,8 @@ class MyClassForReturn {
 }
 
 class MyClassForRV {
+    private a:number = 1337
+    
     constructor() {
     }
 
@@ -85,6 +87,11 @@ class MyClassForRV {
     @RVMethod()
     public doVoidStuff(): void {
 
+    }
+
+    @RVMethod()
+    public takeObj(obj: MyClassForRV): MyClassForRV {
+        return obj
     }
 }
 
@@ -133,6 +140,15 @@ class MyClassForRV {
         let myClass = new MyClassForRV()
 
         myClass.doVoidStuff()
+    }
+
+    @test public "Method called RVMethod takeObject"() {
+        let myClass = new MyClassForRV()
+
+        myClass.takeObj(myClass)
+        myClass.takeObj(myClass)
+        myClass.takeObj(myClass)
+
     }
 
 
