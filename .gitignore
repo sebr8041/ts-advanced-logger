@@ -29,3 +29,5 @@ node_modules
 
 js
 js-test
+dist
+test-dist
