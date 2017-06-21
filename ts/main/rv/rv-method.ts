@@ -34,6 +34,7 @@ class RVMethodObserver implements IMethodObserver {
     static clientId: string = null
     static logNumber: number = 0
     static buffer: any[] = []
+    static registered:boolean = false
 
     private arguments: string = ""
     private result: string = ""
@@ -41,12 +42,27 @@ class RVMethodObserver implements IMethodObserver {
     private executionTimeMillis = 0
     private methodName: string = ""
 
+    registerForUnload(): void {
+        if(RVMethodObserver.registered) {
+            return;
+        }
+        RVMethodObserver.registered = true
+        window.addEventListener("beforeunload", (()=>{
+            console.log("flushing buffer...")
+            this.flushBuffer()
+        }))
+    }
+
     methodNameCalled(methodName: string): void {
         this.methodName = methodName
     }
 
     methodCalled(that, ...args: any[]): void {
-        this.arguments = args[0].join(", ")
+        let argObjects: any[] = args[0]
+
+        this.arguments = argObjects.map((obj) => {
+            return JSON.stringify(obj)
+        }).join(", ")
         this.startTime = new Date().getTime()
     }
 
@@ -61,7 +77,10 @@ class RVMethodObserver implements IMethodObserver {
         if (RVMethodObserver.clientId === null) {
             RVMethodObserver.clientId = this.generateClientId()
         }
-        let date = new Date().toDateString()
+        let d = new Date()
+        let date = ("0" + d.getDate()).slice(-2) + "." + ("0" + (d.getMonth() + 1)).slice(-2) + "." +
+            d.getFullYear() + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + d.getSeconds() + ":" + d.getMilliseconds() + "" + d.getTimezoneOffset() / 60;
+
         let result = {
             timestamp: date,
             clientId: RVMethodObserver.clientId,
@@ -77,9 +96,13 @@ class RVMethodObserver implements IMethodObserver {
         if (RVMethodObserver.buffer.length >= RVConfig.BATCH_SIZE) {
             console.log("send A", JSON.stringify(RVMethodObserver.buffer))
             console.log("send B", RVMethodObserver.buffer)
-            this.postToServer(JSON.stringify(RVMethodObserver.buffer))
-            RVMethodObserver.buffer = []
+            this.flushBuffer()
         }
+    }
+
+    flushBuffer(): void {
+        this.postToServer(JSON.stringify(RVMethodObserver.buffer))
+        RVMethodObserver.buffer = []
     }
 
     postToServer(message: string): void {
@@ -114,5 +137,7 @@ class RVMethodObserver implements IMethodObserver {
  })
  */
 export function RVMethod() {
-    return ObserveMethod(new RVMethodObserver())
+    let obj = new RVMethodObserver()
+    obj.registerForUnload()
+    return ObserveMethod(obj)
 }
