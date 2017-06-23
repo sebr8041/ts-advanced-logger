@@ -1,6 +1,6 @@
-# ts-client-logger
+# ts-advanced-logger
 ## Build
-The following command will create the transpiled files in ./dist
+The following command will create the transpiled files in ./js
 * ```npm install```
 * ```npm run compile```
 ## Tests
