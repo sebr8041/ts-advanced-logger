@@ -16,3 +16,5 @@ export * from "./rv/rv-method";
 export * from "./service/i-logger";
 export * from "./service/logger";
 export * from "./service/remote-logger";
+export * from "./service/i-log-level-rule"
+export * from "./service/log-level-checker"
