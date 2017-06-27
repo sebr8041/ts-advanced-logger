@@ -1,12 +1,9 @@
 # ts-advanced-logger
-## Build
-The following command will create the transpiled files in ./js
-* ```npm install```
-* ```npm run compile```
-## Tests
-Use ```npm test``` to run all Test-Suites.
+Our Typescript advanced logger supports two main features:
+* Specific Logging by developers
+* Automatically Runtime Verification Logging
 
-## Specific User Logging
+## Specific Logging by developers
 This section contains information about the user logging. 
 
 ### Configuration 
@@ -100,3 +97,13 @@ class FooClass {
 ```
 
 With the configuration Specific User Configuration this example would log the info, warn and error message to console, because there is a specific rule for FooClass.
+
+## Automatically Runtime Verification Logging
+TODO
+
+## Build the project
+The following command will create the transpiled files in ./js
+* ```npm install```
+* ```npm run compile```
+## Tests
+Use ```npm test``` to run all Test-Suites.
