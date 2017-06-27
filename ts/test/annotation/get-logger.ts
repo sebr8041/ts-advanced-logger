@@ -4,7 +4,6 @@ import { assert } from "chai";
 import { suite, test } from "mocha-typescript";
 import { LoggerFactory } from "../../main/factory/logger-factory";
 import { ILogger } from '../../main/service/i-logger';
-import { Logger } from '../../main/service/logger';
 import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
 import { LogLevelChecker } from "../../main/index"

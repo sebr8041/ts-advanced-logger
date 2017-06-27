@@ -1,6 +1,5 @@
 
 import { ILogger } from '../service/i-logger';
-import { Logger } from '../service/logger';
 import { LoggerFactoryException } from "./logger-factory-exception";
 import { LogLevelChecker } from "../service/log-level-checker"
 

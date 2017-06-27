@@ -12,7 +12,7 @@ const CONSOLE_DEBUG_METHOD = console["debug"] ? "debug" : "log";
 /**
  * normal logger implementation to to on the browser console.
  */
-export class Logger extends LoggerWithChecker {
+export class ConsoleLogger extends LoggerWithChecker {
 
     protected logFatal(message?: any, ...optionalParams: any[]) {
         arguments[0] = "FATAL " + this.getClassName() + ": " + arguments[0];

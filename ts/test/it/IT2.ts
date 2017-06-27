@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { suite, test } from "mocha-typescript";
-import { ILogger, GetLogger, Logger, LoggerFactory, LogLevelChecker, LogLevelEnum } from "../../main/index"
+import { ILogger, GetLogger, ConsoleLogger, LoggerFactory, LogLevelChecker, LogLevelEnum } from "../../main/index"
 
 
 
@@ -18,7 +18,7 @@ console.error.apply = function (a, b) {
  */
 @suite class IT2Suite {
 
-    @GetLogger(Logger)
+    @GetLogger(ConsoleLogger)
     private logger: ILogger;
 
     @test public "Logger logs a message on console"() {
