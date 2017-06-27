@@ -1,7 +1,10 @@
 import { ILogger } from './i-logger';
-
+import {LogLevelChecker} from "../index"
 
 export class RemoteLogger implements ILogger {
+    setLogLevelChecker(lLC: LogLevelChecker): void {
+        throw new Error("Method not implemented.");
+    }
 
     private className: string;
 

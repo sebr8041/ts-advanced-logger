@@ -5,7 +5,7 @@ import { LogLevelChecker, LogLevelEnum } from '../../main/index';
 @suite class LogLevelCheckerSuite {
 
     @test public "isLogEnabled: only defaultLogLevel"() {
-        let instance = new LogLevelChecker();
+        let instance = LogLevelChecker.get();
         instance.setDefaultLogLevel(LogLevelEnum.INFO);
 
         assert.isTrue(instance.isLogEnabled("any", LogLevelEnum.INFO))
@@ -17,7 +17,7 @@ import { LogLevelChecker, LogLevelEnum } from '../../main/index';
     }
 
     @test public "isLogEnabled: specific rules for a class"() {
-        let instance = new LogLevelChecker();
+        let instance = LogLevelChecker.get();
         instance.setDefaultLogLevel(LogLevelEnum.FATAL);
         instance.setRules([
             {
@@ -53,7 +53,7 @@ import { LogLevelChecker, LogLevelEnum } from '../../main/index';
     }
 
     @test public "isLogEnabled: specific rules for a class 2"() {
-        let instance = new LogLevelChecker();
+        let instance = LogLevelChecker.get();
         instance.setDefaultLogLevel(LogLevelEnum.INFO);
         instance.setRules([
             {

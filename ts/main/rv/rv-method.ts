@@ -2,9 +2,14 @@ import { IMethodObserver, ObserveMethod } from "../annotation/observe-method"
 import { GetLogger } from "../annotation/get-logger"
 import { ILogger } from "../service/i-logger"
 import { RVConfig } from "../config/config"
+import {LogLevelChecker} from "../index"
 import * as $ from "jquery";
 
 export class RVLogger implements ILogger {
+    setLogLevelChecker(lLC: LogLevelChecker): void {
+        throw new Error("Method not implemented.");
+    }
+
     error(message?: any, ...optionalParams: any[]) {
         throw new Error('Method not implemented.');
     }
@@ -34,7 +39,7 @@ class RVMethodObserver implements IMethodObserver {
     static clientId: string = null
     static logNumber: number = 0
     static buffer: any[] = []
-    static registered:boolean = false
+    static registered: boolean = false
 
     private arguments: any[] = []
     private result: any = ""
@@ -43,11 +48,11 @@ class RVMethodObserver implements IMethodObserver {
     private methodName: string = ""
 
     registerForUnload(): void {
-        if(RVMethodObserver.registered) {
+        if (RVMethodObserver.registered) {
             return;
         }
         RVMethodObserver.registered = true
-        window.addEventListener("beforeunload", (()=>{
+        window.addEventListener("beforeunload", (() => {
             console.log("flushing buffer...")
             this.flushBuffer()
         }))
@@ -64,7 +69,7 @@ class RVMethodObserver implements IMethodObserver {
 
     methodReturns(that, ...args: any[]): void {
         this.executionTimeMillis = new Date().getTime() - this.startTime
-        if(args[0]) {
+        if (args[0]) {
             this.result = args[0]
         }
         this.log()

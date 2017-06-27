@@ -7,6 +7,7 @@ import { ILogger } from '../../main/service/i-logger';
 import { Logger } from '../../main/service/logger';
 import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
+import { LogLevelChecker } from "../../main/index"
 class MyLogger implements ILogger {
     setClassName(className: string): void {
         //throw new Error('Method not implemented.');
@@ -23,6 +24,9 @@ class MyLogger implements ILogger {
     }
     debug(message?: any, ...optionalParams: any[]) {
         throw new Error('Method not implemented.');
+    }
+    setLogLevelChecker(lLC: LogLevelChecker): void {
+        throw new Error("Method not implemented.");
     }
 }
 
@@ -44,6 +48,9 @@ class MyDefaultLogger implements ILogger {
     debug(message?: any, ...optionalParams: any[]) {
         throw new Error('Method not implemented.');
     }
+    setLogLevelChecker(lLC: LogLevelChecker): void {
+        throw new Error("Method not implemented.");
+    }
 }
 
 @suite class GetLoggerSuite {
@@ -63,7 +70,7 @@ class MyDefaultLogger implements ILogger {
 
     @test public "Using Default-Logger"() {
         LoggerFactory.setDefaultLogger(MyDefaultLogger)
-        
+
         class MyClass {
             @GetLogger()
             private logger: ILogger

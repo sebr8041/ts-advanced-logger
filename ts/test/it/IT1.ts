@@ -9,8 +9,12 @@ import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
 import { ObserveMethod } from "../../main/annotation/observe-method";
 import { RVMethod, RVLogger } from "../../main/rv/rv-method";
+import { LogLevelChecker } from "../../main/index"
 
 class MyLogger implements ILogger {
+    setLogLevelChecker(lLC: LogLevelChecker): void {
+        throw new Error("Method not implemented.");
+    }
     public a: number
     public b: number
 
@@ -30,6 +34,7 @@ class MyLogger implements ILogger {
         this.a = a[0];
         this.b = a[1];
     }
+    
 }
 
 class MyClass {
