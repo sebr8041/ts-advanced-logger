@@ -1,6 +1,6 @@
 
-import { LogLevelEnum, ILogLevelRule } from "../index";
-
+import { ILogLevelRule } from "./i-log-level-rule";
+import {LogLevelEnum} from "../enum/log-level-enum";
 /**
  * can give information about which class should be logged on which level.
  */
@@ -21,8 +21,8 @@ export class LogLevelChecker {
     private constructor() {
     }
 
-    public static get():LogLevelChecker{
-        if(LogLevelChecker.instance === null){
+    public static get(): LogLevelChecker {
+        if (LogLevelChecker.instance === null) {
             LogLevelChecker.instance = new LogLevelChecker();
         }
         return LogLevelChecker.instance;

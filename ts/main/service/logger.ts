@@ -1,7 +1,7 @@
 
 import { ILogger } from './i-logger';
-import { LogLevelChecker, LogLevelEnum } from '../index';
-
+import { LogLevelChecker } from './log-level-checker';
+import {LogLevelEnum} from "../enum/log-level-enum";
 /**
  * does the current browser support console.debug ?
  * when not do console.log

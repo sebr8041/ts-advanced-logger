@@ -2,8 +2,9 @@
 import { ILogger } from '../service/i-logger';
 import { Logger } from '../service/logger';
 import { LoggerFactoryException } from "./logger-factory-exception";
+import { LogLevelChecker } from "../service/log-level-checker"
 
-const CONSOLE_DEBUG_METHOD = console["debug"] ? "debug" : "log";
+
 
 /**
  * Factory to access default-logger.
@@ -34,6 +35,7 @@ export class LoggerFactory {
         }
         let logger = new this.defaultLoggerConstructorFn()
         logger.setClassName(className);
+        logger.setLogLevelChecker(LogLevelChecker.get())
         return logger;
     }
 

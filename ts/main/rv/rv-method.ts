@@ -2,12 +2,11 @@ import { IMethodObserver, ObserveMethod } from "../annotation/observe-method"
 import { GetLogger } from "../annotation/get-logger"
 import { ILogger } from "../service/i-logger"
 import { RVConfig } from "../config/config"
-import {LogLevelChecker} from "../index"
+import { LogLevelChecker } from "../service/log-level-checker"
 import * as $ from "jquery";
 
 export class RVLogger implements ILogger {
     setLogLevelChecker(lLC: LogLevelChecker): void {
-        throw new Error("Method not implemented.");
     }
 
     error(message?: any, ...optionalParams: any[]) {

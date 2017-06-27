@@ -1,5 +1,5 @@
 import { ILogger } from './i-logger';
-import {LogLevelChecker} from "../index"
+import { LogLevelChecker } from "./log-level-checker"
 
 export class RemoteLogger implements ILogger {
     setLogLevelChecker(lLC: LogLevelChecker): void {
@@ -27,6 +27,6 @@ export class RemoteLogger implements ILogger {
 
     public debug(message?: any, ...optionalParams: any[]) {
     }
- 
+
 
 }

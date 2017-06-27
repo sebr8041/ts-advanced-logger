@@ -13,7 +13,7 @@ import { LogLevelChecker } from "../../main/index"
 
 class MyLogger implements ILogger {
     setLogLevelChecker(lLC: LogLevelChecker): void {
-        throw new Error("Method not implemented.");
+      
     }
     public a: number
     public b: number

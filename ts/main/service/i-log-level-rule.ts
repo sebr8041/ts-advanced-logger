@@ -1,5 +1,5 @@
 
-import { LogLevelEnum } from "../index";
+import { LogLevelEnum } from "../enum/log-level-enum";
 
 /**
  * representation of an specific log level rule.

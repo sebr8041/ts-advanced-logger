@@ -8,6 +8,7 @@ import { Logger } from '../../main/service/logger';
 import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
 import { LogLevelChecker } from "../../main/index"
+
 class MyLogger implements ILogger {
     setClassName(className: string): void {
         //throw new Error('Method not implemented.');
@@ -26,7 +27,6 @@ class MyLogger implements ILogger {
         throw new Error('Method not implemented.');
     }
     setLogLevelChecker(lLC: LogLevelChecker): void {
-        throw new Error("Method not implemented.");
     }
 }
 
@@ -49,7 +49,6 @@ class MyDefaultLogger implements ILogger {
         throw new Error('Method not implemented.');
     }
     setLogLevelChecker(lLC: LogLevelChecker): void {
-        throw new Error("Method not implemented.");
     }
 }
 

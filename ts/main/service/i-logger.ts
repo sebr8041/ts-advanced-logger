@@ -1,4 +1,4 @@
-import { LogLevelChecker } from "../index"
+import { LogLevelChecker } from "./log-level-checker"
 /**
  * logger inferface.
  */
