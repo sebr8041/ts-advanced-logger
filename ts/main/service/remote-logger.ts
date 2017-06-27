@@ -1,37 +1,25 @@
 import { ILogger } from './i-logger';
 import { LogLevelChecker } from "./log-level-checker"
+import { LoggerWithChecker } from './logger-with-checker';
 
-export class RemoteLogger implements ILogger {
-
-
-    private className: string;
-
-    constructor() {
-
+export class RemoteLogger extends LoggerWithChecker {
+    protected logFatal(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
     }
-
-    public setClassName(cN: string) {
-        this.className = cN;
+    protected logError(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
     }
-
-    public error(message?: any, ...optionalParams: any[]) {
+    protected logWarn(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
     }
-
-    public warn(message?: any, ...optionalParams: any[]) {
+    protected logInfo(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
     }
-
-    public info(message?: any, ...optionalParams: any[]) {
+    protected logDebug(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
     }
-
-    public debug(message?: any, ...optionalParams: any[]) {
+    protected logTrace(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
     }
-
-    public trace(message?: any, ...optionalParams: any[]) {
-    }
-    public fatal(message?: any, ...optionalParams: any[]) {
-    }
-    public setLogLevelChecker(lLC: LogLevelChecker): void {
-    }
-
 
 }
