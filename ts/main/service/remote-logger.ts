@@ -2,9 +2,7 @@ import { ILogger } from './i-logger';
 import { LogLevelChecker } from "./log-level-checker"
 
 export class RemoteLogger implements ILogger {
-    setLogLevelChecker(lLC: LogLevelChecker): void {
-        throw new Error("Method not implemented.");
-    }
+
 
     private className: string;
 
@@ -26,6 +24,13 @@ export class RemoteLogger implements ILogger {
     }
 
     public debug(message?: any, ...optionalParams: any[]) {
+    }
+
+    public trace(message?: any, ...optionalParams: any[]) {
+    }
+    public fatal(message?: any, ...optionalParams: any[]) {
+    }
+    public setLogLevelChecker(lLC: LogLevelChecker): void {
     }
 
 

@@ -10,6 +10,12 @@ import { LoggerFactoryException } from "../../main/factory/logger-factory-except
 import { LogLevelChecker } from "../../main/index"
 
 class MyLogger implements ILogger {
+    trace(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
+    }
+    fatal(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
+    }
     setClassName(className: string): void {
         //throw new Error('Method not implemented.');
     }
@@ -32,6 +38,12 @@ class MyLogger implements ILogger {
 
 
 class MyDefaultLogger implements ILogger {
+    trace(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
+    }
+    fatal(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
+    }
     setClassName(className: string): void {
         //throw new Error('Method not implemented.');
     }

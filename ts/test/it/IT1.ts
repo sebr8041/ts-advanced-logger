@@ -12,6 +12,12 @@ import { RVMethod, RVLogger } from "../../main/rv/rv-method";
 import { LogLevelChecker } from "../../main/index"
 
 class MyLogger implements ILogger {
+    trace(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
+    }
+    fatal(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
+    }
     setLogLevelChecker(lLC: LogLevelChecker): void {
       
     }

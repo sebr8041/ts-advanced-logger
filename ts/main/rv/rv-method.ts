@@ -6,6 +6,7 @@ import { LogLevelChecker } from "../service/log-level-checker"
 import * as $ from "jquery";
 
 export class RVLogger implements ILogger {
+
     setLogLevelChecker(lLC: LogLevelChecker): void {
     }
 
@@ -19,6 +20,13 @@ export class RVLogger implements ILogger {
 
     info(message?: any, ...optionalParams: any[]) {
         throw new Error('Method not implemented.');
+    }
+
+    trace(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
+    }
+    fatal(message?: any, ...optionalParams: any[]) {
+        throw new Error("Method not implemented.");
     }
 
     debug(toLog: string) {
