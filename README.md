@@ -14,7 +14,7 @@ The class LogLevelChecker is for configuration on which level the logger should 
 This class is an singleton. The following code example shows an configuration:
 
 ```ts
-import {LogLevelChecker, LogLevelEnum, LoggerFactory, Logger} from "ts-advanced-logger"
+import {LogLevelChecker, LogLevelEnum, LoggerFactory, ConsoleLogger, RemoteLogger} from "ts-advanced-logger"
 
 // load the singleton
 let instance = LogLevelChecker.get();
@@ -34,9 +34,47 @@ instance.setRules([
     }
 ]);
 
-// set default logger which should be used to log. The Logger-Class logs normal messages to browser console.
-LoggerFactory.setDefaultLogger(Logger)
+// OPTION A: Log on browser console
+// set default logger which should be used to log. The Logger-Class 
+// logs normal messages to browser console.
+LoggerFactory.setDefaultLogger(ConsoleLogger)
+
+// OPTION B: Log on remote server
+// set the url where logger should send logs via POST in REST Format.
+RemoteLogger.setServerUrl("http://localhost/myServerToGetLogs")
+// set as defaultlogger
+LoggerFactory.setDefaultLogger(RemoteLogger)
 ```
+
+We support currently the ConsoleLogger and RemoteLogger. You can implement your own logger by writting a class which extends LoggerWithChecker. The following example shows an example implementation:
+
+```ts
+import{LoggerWithChecker} from "ts-advanced-logger"
+
+class MyLogger extends LoggerWithChecker{
+
+    protected logFatal(message?: any, ...optionalParams: any[]) {
+        // own implementation. 
+    }
+    protected logError(message?: any, ...optionalParams: any[]) {
+        // own implementation. 
+    }
+    protected logWarn(message?: any, ...optionalParams: any[]) {
+        // own implementation. 
+    }
+    protected logInfo(message?: any, ...optionalParams: any[]) {
+        // own implementation. 
+    }
+    protected logDebug(message?: any, ...optionalParams: any[]) {
+        // own implementation. 
+    }
+    protected logTrace(message?: any, ...optionalParams: any[]) {
+        // own implementation. 
+    }
+}
+```
+
+All logger which get extended by LoggerWithChecker supports automatically the LogLevelChecker Configuration.
 
 ### Usage
 The following example shows an usage example:
