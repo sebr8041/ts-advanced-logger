@@ -4,8 +4,11 @@ import { ILogger } from "../service/i-logger"
 import { RVConfig } from "../config/config"
 import { LogLevelChecker } from "../service/log-level-checker"
 import * as $ from "jquery";
+import { ClientService } from "../service/client-service"
 
 export class RVLogger implements ILogger {
+    setClientService(clientService: ClientService): void {
+    }
 
     setLogLevelChecker(lLC: LogLevelChecker): void {
     }

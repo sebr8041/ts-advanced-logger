@@ -7,8 +7,11 @@ import { ILogger } from '../../main/service/i-logger';
 import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
 import { LogLevelChecker } from "../../main/index"
+import { ClientService } from "../../main/service/client-service"
 
 class MyLogger implements ILogger {
+    setClientService(clientService: ClientService): void {
+    }
     trace(message?: any, ...optionalParams: any[]) {
         throw new Error("Method not implemented.");
     }
@@ -37,6 +40,8 @@ class MyLogger implements ILogger {
 
 
 class MyDefaultLogger implements ILogger {
+    setClientService(clientService: ClientService): void {
+    }
     trace(message?: any, ...optionalParams: any[]) {
         throw new Error("Method not implemented.");
     }

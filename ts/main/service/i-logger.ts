@@ -1,4 +1,5 @@
 import { LogLevelChecker } from "./log-level-checker"
+import { ClientService } from "./client-service"
 /**
  * logger inferface.
  */
@@ -44,4 +45,9 @@ export interface ILogger {
      * over this method the instance to check where the logger should log information will be setted.
      */
     setLogLevelChecker(lLC: LogLevelChecker): void
+
+    /**
+     * over this method the instance for clientservice will be injected by getLogger decorator.
+     */
+    setClientService(clientService: ClientService): void
 }

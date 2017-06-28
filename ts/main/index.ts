@@ -19,3 +19,4 @@ export * from "./service/remote-logger";
 export * from "./service/i-log-level-rule"
 export * from "./service/log-level-checker"
 export * from "./service/logger-with-checker"
+export * from "./service/client-service"
