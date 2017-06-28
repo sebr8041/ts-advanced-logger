@@ -3,44 +3,11 @@ import { GetLogger } from "../annotation/get-logger"
 import { ILogger } from "../service/i-logger"
 import { RVConfig } from "../config/config"
 import { LogLevelChecker } from "../service/log-level-checker"
+import { ConsoleLogger} from "../service/console-logger"
 import * as $ from "jquery";
 
-export class RVLogger implements ILogger {
-
-    setLogLevelChecker(lLC: LogLevelChecker): void {
-    }
-
-    error(message?: any, ...optionalParams: any[]) {
-        throw new Error('Method not implemented.');
-    }
-
-    warn(message?: any, ...optionalParams: any[]) {
-        throw new Error('Method not implemented.');
-    }
-
-    info(message?: any, ...optionalParams: any[]) {
-        throw new Error('Method not implemented.');
-    }
-
-    trace(message?: any, ...optionalParams: any[]) {
-        throw new Error("Method not implemented.");
-    }
-    fatal(message?: any, ...optionalParams: any[]) {
-        throw new Error("Method not implemented.");
-    }
-
-    debug(toLog: string) {
-        console.log("will send to log: ", toLog)
-    }
-
-    setClassName(className: string): void {
-    }
-
-
-}
-
 class RVMethodObserver implements IMethodObserver {
-    @GetLogger(RVLogger)
+    @GetLogger(ConsoleLogger)
     private logger: ILogger
 
     static clientId: string = null
@@ -60,7 +27,7 @@ class RVMethodObserver implements IMethodObserver {
         }
         RVMethodObserver.registered = true
         window.addEventListener("beforeunload", (() => {
-            console.log("flushing buffer...")
+            this.logger.debug("flushing buffer...")
             this.flushBuffer()
         }))
     }

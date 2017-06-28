@@ -19,11 +19,15 @@ export class ConsoleLogger extends LoggerWithChecker {
         console.error.apply(console, arguments);
     }
     protected logError(message?: any, ...optionalParams: any[]) {
-        arguments[0] = "ERROR " + this.getClassName() + ": " + arguments[0];
+        arguments[0] = "ERROR " + this.getClassName() + ": " + JSON.stringify(arguments[0]);
         console.error.apply(console, arguments);
     }
     protected logWarn(message?: any, ...optionalParams: any[]) {
-        arguments[0] = "WARN  " + this.getClassName() + ": " + arguments[0];
+        //arguments[0] = "WARN  " + this.getClassName() + ": " + arguments[0];
+         
+        //message[0] = "WARN  " + this.getClassName() + ": "+Array.prototype.slice.call(msg)
+        console.log("message: ", message)
+        //console.warn("WARN  " + this.getClassName() + ": ", message, optionalParams)
         console.warn.apply(console, arguments);
     }
     protected logInfo(message?: any, ...optionalParams: any[]) {

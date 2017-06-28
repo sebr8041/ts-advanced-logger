@@ -7,7 +7,7 @@ import { ILogger } from '../../main/service/i-logger';
 import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
 import { ObserveMethod } from "../../main/annotation/observe-method";
-import { RVMethod, RVLogger } from "../../main/rv/rv-method";
+import { RVMethod} from "../../main/rv/rv-method";
 import { LogLevelChecker } from "../../main/index"
 
 class MyLogger implements ILogger {

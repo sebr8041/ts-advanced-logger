@@ -30,6 +30,29 @@ console.error.apply = function (a, b) {
         assert.isTrue(currentCounter < consoleErrorCallCounter)
     }
 
+    @test public "Log string to console"() {
+        let readMessage
+        console.warn = (message?: any, ...optionalParams: any[]) => {
+            readMessage = message
+        }
+
+        this.logger.warn("hello")
+        assert.equal("WARN  IT2Suite: hello", readMessage)
+    }
+
+    @test public "Log object to console"() {
+        let obj = { a: 10, b: 'c' }
+        let readMessage
+        console.warn = (message?: any, ...optionalParams: any[]) => {
+            readMessage = message
+        }
+
+        this.logger.warn(obj)
+        console.log("readMessage: ", obj, typeof(obj))
+        
+        assert.equal(JSON.stringify(obj), "WARN  IT2Suite: "+JSON.stringify(readMessage))
+    }
+
 
     @test public "Logger not logs a message on console because loglevelchecker says no!"() {
 
