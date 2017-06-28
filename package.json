@@ -1,6 +1,6 @@
 {
   "name": "ts-advanced-logger",
-  "version": "1.0.20",
+  "version": "1.0.22",
   "description": "Advanced Logger Module",
   "main": "js/index.js",
   "typings": "js/index",
@@ -47,6 +47,7 @@
   "dependencies": {
     "concat-map": "0.0.1",
     "jquery": "^3.2.1",
+    "rxjs": "^5.4.1",
     "source-map-support": "0.4.14",
     "xmlhttprequest": "^1.8.0"
   }

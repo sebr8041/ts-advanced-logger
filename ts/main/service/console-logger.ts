@@ -3,6 +3,7 @@ import { ILogger } from './i-logger';
 import { LogLevelChecker } from './log-level-checker';
 import { LogLevelEnum } from "../enum/log-level-enum";
 import { LoggerWithChecker } from './logger-with-checker';
+import {ClientService} from "./client-service"
 /**
  * does the current browser support console.debug ?
  * when not do console.log
@@ -13,6 +14,9 @@ const CONSOLE_DEBUG_METHOD = console["debug"] ? "debug" : "log";
  * normal logger implementation to to on the browser console.
  */
 export class ConsoleLogger extends LoggerWithChecker {
+
+    setClientService(clientService: ClientService): void {
+    }
 
     protected logFatal(message?: any, ...optionalParams: any[]) {
         arguments[0] = "FATAL " + this.getClassName() + ": " + arguments[0];

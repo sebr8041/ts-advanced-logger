@@ -9,8 +9,11 @@ import { LoggerFactoryException } from "../../main/factory/logger-factory-except
 import { ObserveMethod } from "../../main/annotation/observe-method";
 import { RVMethod} from "../../main/rv/rv-method";
 import { LogLevelChecker } from "../../main/index"
+import { ClientService } from "../../main/service/client-service"
 
 class MyLogger implements ILogger {
+    setClientService(clientService: ClientService): void {
+    }
     trace(message?: any, ...optionalParams: any[]) {
         throw new Error("Method not implemented.");
     }

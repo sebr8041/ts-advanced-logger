@@ -2,11 +2,13 @@
 import { ILogger } from './i-logger';
 import { LogLevelChecker } from './log-level-checker';
 import { LogLevelEnum } from "../enum/log-level-enum";
-
+import { ClientService } from "./client-service"
 /**
  * this abstract logger checks log level for the diffrent classes and call only log* methods when log should be done.
  */
 export abstract class LoggerWithChecker implements ILogger {
+
+
 
     /**
      * logger saves class name in which context logger should log.
@@ -86,6 +88,13 @@ export abstract class LoggerWithChecker implements ILogger {
      */
     protected abstract logTrace(message?: any, ...optionalParams: any[]);
 
+
+    /**
+     * client service can be set over this method
+     * @param clientService 
+     */
+    abstract setClientService(clientService: ClientService): void
+    
     /**
      * log on fatal
      * @param message 

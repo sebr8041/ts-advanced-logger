@@ -18,4 +18,14 @@ export interface IRemoteLoggerMessage {
      * log message
      */
     message: any;
+
+    /**
+     * id to identify browser
+     */
+    clientId: string;
+
+    /**
+     * number of this log.
+     */
+    logNumber: number;
 }

@@ -5,6 +5,7 @@ import { RVConfig } from "../config/config"
 import { LogLevelChecker } from "../service/log-level-checker"
 import { ConsoleLogger} from "../service/console-logger"
 import * as $ from "jquery";
+import { ClientService } from "../service/client-service"
 
 class RVMethodObserver implements IMethodObserver {
     @GetLogger(ConsoleLogger)

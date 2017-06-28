@@ -1,5 +1,6 @@
 import { ILogger } from '../service/i-logger';
 import { LoggerFactory } from "../factory/logger-factory";
+import { ClientFactory } from "../factory/client-factory";
 import { LogLevelChecker } from "../service/log-level-checker"
 /**
  * Decorator to inject a logger-instance into an instance-variable.
@@ -13,11 +14,14 @@ export function GetLogger<T extends ILogger>(loggerClass?: new () => T) {
             let logger = new loggerClass();
             logger.setClassName(target.constructor.name)
             logger.setLogLevelChecker(LogLevelChecker.get())
+
+            // fill clientService
+            let cF = new ClientFactory();
+            logger.setClientService(cF.getClientServiceFor(target.constructor.name))
             target[variableName] = logger
         } else {
             console.log("GetLogger without loggerClass. Using default!")
             target[variableName] = LoggerFactory.getDefaultLogger(target.constructor.name);
-
         }
     }
 }
