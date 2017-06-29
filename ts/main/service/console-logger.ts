@@ -39,9 +39,9 @@ export class ConsoleLogger extends LoggerWithChecker {
     }
     protected logTrace(message?: any, ...optionalParams: any[]) {
         if (console.debug) {
-            console.debug("DEBUG " + this.getClassName() + ": ", message, ...optionalParams)
+            console.debug("TRACE " + this.getClassName() + ": ", message, ...optionalParams)
         } else {
-            console.log("DEBUG " + this.getClassName() + ": ", message, ...optionalParams)
+            console.log("TRACE " + this.getClassName() + ": ", message, ...optionalParams)
         }
     }
 

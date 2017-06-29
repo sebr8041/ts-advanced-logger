@@ -1,6 +1,6 @@
 {
   "name": "ts-advanced-logger",
-  "version": "1.0.23",
+  "version": "1.0.25",
   "description": "Advanced Logger Module",
   "main": "js/index.js",
   "typings": "js/index",
