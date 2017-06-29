@@ -94,7 +94,7 @@ export abstract class LoggerWithChecker implements ILogger {
      * @param clientService 
      */
     abstract setClientService(clientService: ClientService): void
-    
+
     /**
      * log on fatal
      * @param message 
@@ -102,7 +102,7 @@ export abstract class LoggerWithChecker implements ILogger {
      */
     public fatal(message?: any, ...optionalParams: any[]) {
         if (this.checkValidInstanceFields() && this.checker.isLogEnabled(this.getClassName(), LogLevelEnum.ERROR)) {
-            this.logFatal(arguments)
+            this.logFatal(message, ...optionalParams);
         }
     }
 
@@ -113,7 +113,7 @@ export abstract class LoggerWithChecker implements ILogger {
      */
     public error(message?: any, ...optionalParams: any[]) {
         if (this.checkValidInstanceFields() && this.checker.isLogEnabled(this.getClassName(), LogLevelEnum.ERROR)) {
-            this.logError(arguments);
+            this.logError(message, ...optionalParams);
         }
     }
 
@@ -124,7 +124,7 @@ export abstract class LoggerWithChecker implements ILogger {
      */
     public warn(message?: any, ...optionalParams: any[]) {
         if (this.checkValidInstanceFields() && this.checker.isLogEnabled(this.getClassName(), LogLevelEnum.WARN)) {
-            this.logWarn(arguments);
+             this.logWarn(message, ...optionalParams);
         }
     }
 
@@ -135,7 +135,7 @@ export abstract class LoggerWithChecker implements ILogger {
      */
     public info(message?: any, ...optionalParams: any[]) {
         if (this.checkValidInstanceFields() && this.checker.isLogEnabled(this.getClassName(), LogLevelEnum.ERROR)) {
-            this.logInfo(arguments);
+            this.logInfo(message, ...optionalParams);
         }
     }
 
@@ -146,7 +146,7 @@ export abstract class LoggerWithChecker implements ILogger {
      */
     public debug(message?: any, ...optionalParams: any[]) {
         if (this.checkValidInstanceFields() && this.checker.isLogEnabled(this.getClassName(), LogLevelEnum.ERROR)) {
-            this.logDebug(arguments)
+            this.logDebug(message, ...optionalParams);
         }
     }
 
@@ -157,7 +157,7 @@ export abstract class LoggerWithChecker implements ILogger {
      */
     public trace(message?: any, ...optionalParams: any[]) {
         if (this.checkValidInstanceFields() && this.checker.isLogEnabled(this.getClassName(), LogLevelEnum.ERROR)) {
-            this.logTrace(arguments)
+            this.logTrace(message, ...optionalParams);
         }
     }
 

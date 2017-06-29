@@ -32,27 +32,52 @@ console.error.apply = function (a, b) {
 
     @test public "Log string to console"() {
         let readMessage
-        console.warn = (message?: any, ...optionalParams: any[]) => {
-            readMessage = message
+        console.warn = function (message?: any, ...optionalParams: any[]) {
+            readMessage = arguments
         }
 
         this.logger.warn("hello")
-        assert.equal("WARN  IT2Suite: hello", readMessage)
+        assert.equal('{"0":"WARN IT2Suite: ","1":"hello"}', JSON.stringify(readMessage))
     }
 
     @test public "Log object to console"() {
         let obj = { a: 10, b: 'c' }
         let readMessage
-        console.warn = (message?: any, ...optionalParams: any[]) => {
-            readMessage = message
+        console.warn = function (message?: any, ...optionalParams: any[]) {
+            readMessage = arguments
         }
 
         this.logger.warn(obj)
-        console.log("readMessage: ", obj, typeof(obj))
-        
-        assert.equal(JSON.stringify(obj), "WARN  IT2Suite: "+JSON.stringify(readMessage))
+
+        assert.equal('{"0":"WARN IT2Suite: ","1":{"a":10,"b":"c"}}', JSON.stringify(readMessage))
     }
 
+    @test public "Log two objects to console"() {
+        let obj = { a: 10, b: 'c' }
+        let readMessage
+        console.warn = function (message?: any, ...optionalParams: any[]) {
+            readMessage = arguments
+        }
+
+        this.logger.warn(obj, obj)
+
+        assert.equal('{"0":"WARN IT2Suite: ","1":{"a":10,"b":"c"},"2":{"a":10,"b":"c"}}', JSON.stringify(readMessage))
+    }
+
+    @test public "Log string to debug and console.debug is undefined"() {
+        let readMessage
+        console.debug = undefined
+        this.logger.debug("Test")
+    }
+
+    @test public "Log string to debug when console.debug is defined"() {
+        let readMessage
+        console.debug = function (message?: any, ...optionalParams: any[]) {
+            readMessage = arguments
+        }
+        this.logger.debug("Test")
+        assert.equal('{"0":"DEBUG IT2Suite: ","1":"Test"}', JSON.stringify(readMessage))
+    }
 
     @test public "Logger not logs a message on console because loglevelchecker says no!"() {
 
