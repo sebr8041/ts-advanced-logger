@@ -82,8 +82,10 @@ export class BufferedAjaxEndpoint implements IEndpoint {
     private flushBuffer() {
         console.log("flushing buffer...")
         // send to server
+        console.log("res will send: ", JSON.stringify(this.buffer))
         this.postToServer(this.converter.manyToString(this.buffer))
         this.buffer = [];
+
     }
 
     /**
