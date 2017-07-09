@@ -22,11 +22,23 @@ export class ClientFactory {
      */
     private static instances: ClientStorage[] = null;
 
+    private static rvInstance: ClientService = null;
+
     // innit for storage if not happend before
     constructor() {
-        if(ClientFactory.instances === null){
+        if (ClientFactory.instances === null) {
             ClientFactory.instances = [];
         }
+    }
+
+    /**
+     * returns ClientService insatnce for rv logging.
+     */
+    public getRvInstance() {
+        if (ClientFactory.rvInstance === null) {
+            ClientFactory.rvInstance = new ClientService();
+        }
+        return ClientFactory.rvInstance
     }
 
     /**
@@ -36,7 +48,7 @@ export class ClientFactory {
     public getClientServiceFor(className: new () => any): ClientService {
         // exists in storage?
         let storEle = ClientFactory.instances.filter(ele => ele.forClass === className);
-        
+
         if (storEle.length < 1) {
             // create new instance
             let newEle = {
@@ -52,8 +64,6 @@ export class ClientFactory {
             // return existing instance for class
             return storEle[0].instance;
         }
-
-
     }
 
 }

@@ -72,7 +72,7 @@ export class LogLevelChecker {
      * returns the first not null & not undefined value
      * @param args 
      */
-    firstNotNull(...args: any[]): any {
+    private firstNotNull(...args: any[]): any {
         for (var i = 0; i < args.length; i++) {
             if (args[i]) {
                 return args[i]

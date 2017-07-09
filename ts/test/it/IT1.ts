@@ -7,9 +7,19 @@ import { ILogger } from '../../main/service/i-logger';
 import { GetLogger } from "../../main/annotation/get-logger";
 import { LoggerFactoryException } from "../../main/factory/logger-factory-exception";
 import { ObserveMethod } from "../../main/annotation/observe-method";
-import { RVMethod} from "../../main/rv/rv-method";
+import { RVMethod } from "../../main/rv/rv-method";
 import { LogLevelChecker } from "../../main/index"
 import { ClientService } from "../../main/service/client-service"
+import { EndpointFactory } from "../../main/factory/endpoint-factory";
+import { BufferedAjaxEndpoint } from "../../main/rv/endpoint/buffered-ajax-endpoint";
+import { JsonRvLogConverter } from "../../main/rv/converter/json-rv-log-converter"
+/**
+ * set default endpoint global
+ */
+let myEndpoint = new BufferedAjaxEndpoint()
+myEndpoint.setConverter(new JsonRvLogConverter())
+myEndpoint.setUrl("http://localhost")
+EndpointFactory.setDefaultEndpoint(myEndpoint);
 
 class MyLogger implements ILogger {
     setClientService(clientService: ClientService): void {
@@ -21,7 +31,7 @@ class MyLogger implements ILogger {
         throw new Error("Method not implemented.");
     }
     setLogLevelChecker(lLC: LogLevelChecker): void {
-      
+
     }
     public a: number
     public b: number
@@ -42,7 +52,7 @@ class MyLogger implements ILogger {
         this.a = a[0];
         this.b = a[1];
     }
-    
+
 }
 
 class MyClass {
@@ -87,8 +97,8 @@ class MyClassForReturn {
 }
 
 class MyClassForRV {
-    private a:number = 1337
-    
+    private a: number = 1337
+
     constructor() {
     }
 
@@ -131,6 +141,7 @@ class MyClassForRV {
     }
 
     @test public "Method called RVMethod"() {
+
         let myClass = new MyClassForRV()
 
         let result = myClass.sumUp(3, 7)
