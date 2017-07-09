@@ -99,7 +99,50 @@ class FooClass {
 With the configuration Specific User Configuration this example would log the info, warn and error message to console, because there is a specific rule for FooClass.
 
 ## Automatically Runtime Verification Logging
-TODO
+This section contains information about the runtime verification logging.
+
+### Configuration 
+To start with runtime verification you should configure an endpoint for the logs. The endpoint contains two functions:
+- set the url server endpoint where the logs will be sent by HTTP Post method.
+- configure an converter. We implemented two converters. One for JSON representation and the other for a specific stream representation.
+
+The following code shows possible confugrations. This configuration should be executed only once at the start of the application.
+
+```ts
+import {BufferedAjaxEndpoint, AjaxEndpoint, JsonRvLogConverter, StreamRvLogConverter, EndpointFactory} from "ts-advanced-logger"
+// create an endpoint instance
+// three options: BufferedAjaxEndpoint, AjaxEndpoint or own implementation by implementing the interface IEndpoint.
+let myEndpoint = new BufferedAjaxEndpoint()
+
+// set a converter 
+// also three options: JsonRvLogConverter, StreamRvLogConverter or own implementaion by implementing the IRvLogConverter.
+myEndpoint.setConverter(new JsonRvLogConverter())
+
+// set the enpoint server url. this url will be called by Http post from the library.
+myEndpoint.setUrl("http://localhost")
+
+// sets the endpoint to default endpoint.
+EndpointFactory.setDefaultEndpoint(myEndpoint);
+```
+
+### Usage
+Code example for runtime verification method observation:
+
+```ts
+import {RVMethod} from "ts-advanced-logger"
+
+class MyClassForRV {
+
+    constructor() {
+    }
+
+    @RVMethod()
+    public sumUp(a: number, b: number): number {
+        return a + b;
+    }
+
+}
+```
 
 ## Build the project
 The following command will create the transpiled files in ./js
