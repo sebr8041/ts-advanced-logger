@@ -12,7 +12,7 @@ import { IRvLog } from "./i-rv-log"
 import { ClientFactory } from "../factory/client-factory"
 
 class RVMethodObserver implements IMethodObserver {
-    
+
     @GetLogger(ConsoleLogger)
     private logger: ILogger
 
@@ -55,7 +55,7 @@ class RVMethodObserver implements IMethodObserver {
         this.endpoint = endpoint
         this.clientService = clientService
     }
-    
+
     /**
      * setter for methodName from interface
      */
@@ -93,16 +93,11 @@ class RVMethodObserver implements IMethodObserver {
     private log(): void {
 
         // format date 
-        let d = new Date()
-        this.logData.timestamp = ("0" + d.getDate()).slice(-2) + "." + ("0" + (d.getMonth() + 1)).slice(-2) + "." +
-            d.getFullYear() + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + d.getSeconds() + ":" + d.getMilliseconds() + "" + d.getTimezoneOffset() / 60;
+        this.logData.timestamp = (new Date(this.startTime)).toISOString();
 
         // set client information. client id and sequence number
         this.logData.clientId = this.clientService.getClientId()
         this.logData.logNumber = this.clientService.nextLogNumber()
-
-        // log result
-        this.logger.debug(JSON.stringify(this.logData))
 
         // send information to endpoint
         this.endpoint.provide(this.logData)
