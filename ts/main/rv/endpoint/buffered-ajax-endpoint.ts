@@ -1,6 +1,7 @@
 import { IEndpoint } from "./i-endpoint"
 import { IRvLog } from "../i-rv-log";
 import { IRvLogConverter } from "../converter/i-rv-log-converter";
+import { BufferService } from "../../service/buffer-service"
 
 export class BufferedAjaxEndpoint implements IEndpoint {
 
@@ -17,21 +18,21 @@ export class BufferedAjaxEndpoint implements IEndpoint {
     /**
      * buffer storage before sending to server.
      */
-    private buffer: IRvLog[] = [];
+    private static buffer: BufferService = null;
 
-    /**
-     * max size of buffer storage before sending it to the server endpoint url
-     */
-    private batchSize: number = 3;
+    constructor(maxBufferSize: number) {
+        if (BufferedAjaxEndpoint.buffer === null) {
+            BufferedAjaxEndpoint.buffer = new BufferService(maxBufferSize, true)
+            // register callback
+            BufferedAjaxEndpoint.buffer.registerCallbackFlushingBuffer((elements) => {
+                console.log("flushing buffer...")
+                // send to server
+                console.log("res will send: ", JSON.stringify(elements))
+                this.postToServer(this.converter.manyToString(elements))
+            })
+        }
+        BufferedAjaxEndpoint.buffer.setMaxSize(maxBufferSize)
 
-    /**
-     * register buffer flush before user leave the page.
-     */
-    constructor() {
-        window.addEventListener("beforeunload", (() => {
-            console.log("beforeunload flushing buffer...")
-            this.flushBuffer()
-        }))
     }
 
     /**
@@ -41,15 +42,6 @@ export class BufferedAjaxEndpoint implements IEndpoint {
     setConverter(converter: IRvLogConverter): void {
         this.converter = converter
     }
-
-    /**
-     * set the batch size for the buffer.
-     * @param size 
-     */
-    setBatchSize(size: number) {
-        this.batchSize = size;
-    }
-
     /**
      * receive log from RvMethod decorator
      * @param log 
@@ -62,11 +54,7 @@ export class BufferedAjaxEndpoint implements IEndpoint {
             throw new Error("endpoint url is null.");
         }
 
-        this.buffer.push(log);
-
-        if (this.buffer.length >= this.batchSize) {
-            this.flushBuffer();
-        }
+        BufferedAjaxEndpoint.buffer.add(log)
     }
 
     /**
@@ -74,18 +62,6 @@ export class BufferedAjaxEndpoint implements IEndpoint {
      */
     setUrl(url: string): void {
         this.url = url
-    }
-
-    /**
-     * flushes the buffer. send to server and clear
-     */
-    private flushBuffer() {
-        console.log("flushing buffer...")
-        // send to server
-        console.log("res will send: ", JSON.stringify(this.buffer))
-        this.postToServer(this.converter.manyToString(this.buffer))
-        this.buffer = [];
-
     }
 
     /**

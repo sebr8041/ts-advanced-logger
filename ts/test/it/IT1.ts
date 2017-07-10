@@ -13,10 +13,11 @@ import { ClientService } from "../../main/service/client-service"
 import { EndpointFactory } from "../../main/factory/endpoint-factory";
 import { BufferedAjaxEndpoint } from "../../main/rv/endpoint/buffered-ajax-endpoint";
 import { JsonRvLogConverter } from "../../main/rv/converter/json-rv-log-converter"
+import { AjaxEndpoint } from "../../main/rv/endpoint/ajax-endpoint";
 /**
  * set default endpoint global
  */
-let myEndpoint = new BufferedAjaxEndpoint()
+let myEndpoint = new BufferedAjaxEndpoint(3)
 myEndpoint.setConverter(new JsonRvLogConverter())
 myEndpoint.setUrl("http://localhost")
 EndpointFactory.setDefaultEndpoint(myEndpoint);

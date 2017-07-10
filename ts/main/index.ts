@@ -15,6 +15,7 @@ export * from "./rv/rv-method";
 export * from "./rv/i-rv-log";
 export * from "./rv/converter/i-rv-log-converter";
 export * from "./rv/converter/json-rv-log-converter";
+export * from "./rv/converter/stream-rv-log-converter";
 export * from "./rv/endpoint/i-endpoint"
 export * from "./rv/endpoint/ajax-endpoint"
 export * from "./rv/endpoint/buffered-ajax-endpoint"
