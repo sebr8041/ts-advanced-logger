@@ -18,21 +18,18 @@ export class BufferedAjaxEndpoint implements IEndpoint {
     /**
      * buffer storage before sending to server.
      */
-    private static buffer: BufferService = null;
+    private buffer: BufferService = null;
+
 
     constructor(maxBufferSize: number) {
-        if (BufferedAjaxEndpoint.buffer === null) {
-            BufferedAjaxEndpoint.buffer = new BufferService(maxBufferSize, true)
-            // register callback
-            BufferedAjaxEndpoint.buffer.registerCallbackFlushingBuffer((elements) => {
-                console.log("flushing buffer...")
-                // send to server
-                console.log("res will send: ", JSON.stringify(elements))
-                this.postToServer(this.converter.manyToString(elements))
-            })
-        }
-        BufferedAjaxEndpoint.buffer.setMaxSize(maxBufferSize)
-
+        this.buffer = new BufferService(maxBufferSize, true)
+        // register callback
+        this.buffer.registerCallbackFlushingBuffer((elements) => {
+            console.log("flushing buffer...")
+            // send to server
+            console.log("res will send: ", JSON.stringify(elements))
+            this.postToServer(this.converter.manyToString(elements))
+        })
     }
 
     /**
@@ -54,7 +51,7 @@ export class BufferedAjaxEndpoint implements IEndpoint {
             throw new Error("endpoint url is null.");
         }
 
-        BufferedAjaxEndpoint.buffer.add(log)
+        this.buffer.add(log)
     }
 
     /**

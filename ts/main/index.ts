@@ -24,6 +24,7 @@ export * from "./rv/endpoint/buffered-ajax-endpoint"
 export * from "./service/i-logger";
 export * from "./service/console-logger";
 export * from "./service/remote-logger";
+export * from "./service/buffered-remote-logger";
 export * from "./service/i-log-level-rule"
 export * from "./service/log-level-checker"
 export * from "./service/logger-with-checker"
