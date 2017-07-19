@@ -1,7 +1,6 @@
 import { IMethodObserver, ObserveMethod } from "../annotation/observe-method"
 import { GetLogger } from "../annotation/get-logger"
 import { ILogger } from "../service/i-logger"
-import { RVConfig } from "../config/config"
 import { LogLevelChecker } from "../service/log-level-checker"
 import { ConsoleLogger } from "../service/console-logger"
 import * as $ from "jquery";

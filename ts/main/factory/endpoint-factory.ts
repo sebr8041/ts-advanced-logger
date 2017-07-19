@@ -2,7 +2,7 @@
 import { IEndpoint } from '../rv/endpoint/i-endpoint';
 import { EndpointFactoryException } from "./endpoint-factory-exception";
 import { LogLevelChecker } from "../service/log-level-checker"
-
+import {LoggerConfig} from "../config/config"
 export class EndpointFactory {
 
     private static endpointInstance: IEndpoint = null;
@@ -20,7 +20,7 @@ export class EndpointFactory {
      */
     public static getDefaultEndpoint(): IEndpoint {
         if (EndpointFactory.endpointInstance === null) {
-            throw new EndpointFactoryException("No default-endpoint defined! Use EndpointFactory.setDefaultEndpoint(endpoint) to set a defaultEndpoint, where endpoint is your own IEndpoint-implementation!")
+            EndpointFactory.endpointInstance = LoggerConfig.getLoggerConfig().rvEndpoint
         }
 
         return EndpointFactory.endpointInstance;

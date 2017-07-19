@@ -2,7 +2,7 @@
 import { ILogger } from '../service/i-logger';
 import { LoggerFactoryException } from "./logger-factory-exception";
 import { LogLevelChecker } from "../service/log-level-checker"
-
+import { LoggerConfig } from "../config/config"
 
 
 /**
@@ -30,7 +30,7 @@ export class LoggerFactory {
      */
     public static getDefaultLogger(className: string): ILogger {
         if (this.defaultLoggerConstructorFn == null) {
-            throw new LoggerFactoryException("No default-logger defined! Use LoggerFactory.setDefaultLogger(MyLogger) to set a defaultLogger, where MyLogger is your own ILogger-implementation!")
+            this.defaultLoggerConstructorFn = LoggerConfig.getLoggerConfig().defaultLoggerClass
         }
         let logger = new this.defaultLoggerConstructorFn()
         logger.setClassName(className);

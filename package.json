@@ -45,10 +45,15 @@
     "typescript": "2.3.4"
   },
   "dependencies": {
+    "app-root-dir": "^1.0.2",
+    "app-root-path": "^2.0.1",
     "concat-map": "0.0.1",
     "jquery": "^3.2.1",
     "rxjs": "^5.4.1",
     "source-map-support": "0.4.14",
     "xmlhttprequest": "^1.8.0"
+  },
+  "config": {
+    "myKey": "MyValue"
   }
 }

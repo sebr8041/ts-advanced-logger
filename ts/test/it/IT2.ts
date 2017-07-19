@@ -3,7 +3,6 @@ import { suite, test } from "mocha-typescript";
 import { ILogger, GetLogger, ConsoleLogger, LoggerFactory, LogLevelChecker, LogLevelEnum } from "../../main/index"
 
 
-
 /**
  * mock simulation for console.error.
  * so check method get called by counting global variable
@@ -79,8 +78,7 @@ console.error.apply = function (a, b) {
         assert.equal('{"0":"DEBUG IT2Suite: ","1":"Test"}', JSON.stringify(readMessage))
     }
 
-    @test public "Logger not logs a message on console because loglevelchecker says no!"() {
-
+    @test public "Logger not logs a message on console because loglevelchecker says no!"() {       
         // config log on ERROR global
         let checker = LogLevelChecker.get();
         checker.setDefaultLogLevel(LogLevelEnum.FATAL)

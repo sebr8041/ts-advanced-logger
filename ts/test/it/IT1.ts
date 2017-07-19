@@ -13,12 +13,13 @@ import { ClientService } from "../../main/service/client-service"
 import { EndpointFactory } from "../../main/factory/endpoint-factory";
 import { BufferedAjaxEndpoint } from "../../main/rv/endpoint/buffered-ajax-endpoint";
 import { JsonRvLogConverter } from "../../main/rv/converter/json-rv-log-converter"
+var jsona = require('../../../package.json');
 /**
  * set default endpoint global
  */
 let myEndpoint = new BufferedAjaxEndpoint()
 myEndpoint.setConverter(new JsonRvLogConverter())
-myEndpoint.setUrl("http://localhost")
+myEndpoint.setUrl("http://localhost:8080/logger")
 EndpointFactory.setDefaultEndpoint(myEndpoint);
 
 class MyLogger implements ILogger {
@@ -168,7 +169,12 @@ class MyClassForRV {
 
     @test public "Method called RVMethod takeObject"() {
         let myClass = new MyClassForRV()
-
+        console.log("########################################################")
+        console.log("Wetrt: ${__myKey}")
+        console.log('json', jsona.config.myKey)
+        
+        console.log("########################################################")
+        
         myClass.takeObj(myClass)
         myClass.takeObj(myClass)
         myClass.takeObj(myClass)

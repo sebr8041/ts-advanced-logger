@@ -1,6 +1,6 @@
-
+import { LoggerConfig } from "../config/config"
 import { ILogLevelRule } from "./i-log-level-rule";
-import {LogLevelEnum} from "../enum/log-level-enum";
+import { LogLevelEnum } from "../enum/log-level-enum";
 /**
  * can give information about which class should be logged on which level.
  */
@@ -19,6 +19,7 @@ export class LogLevelChecker {
     private defaultLogLevel: LogLevelEnum = LogLevelEnum.TRACE;
 
     private constructor() {
+        this.setRules(LoggerConfig.getLoggerConfig().rules)
     }
 
     public static get(): LogLevelChecker {

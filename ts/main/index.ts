@@ -1,4 +1,7 @@
 
+// config
+export * from "./config/config"
+
 // annotaitions
 export * from "./annotation/get-logger";
 export * from "./annotation/observe-method";
