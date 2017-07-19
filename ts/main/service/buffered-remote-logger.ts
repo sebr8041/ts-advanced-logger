@@ -16,6 +16,7 @@ export class BufferedRemoteLogger extends LoggerWithChecker {
 
     private static maxSize: number = 10;
 
+    
     constructor(size?: number) {
         super()
         if (size === undefined || size === null) {

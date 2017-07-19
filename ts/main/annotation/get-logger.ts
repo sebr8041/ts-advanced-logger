@@ -4,6 +4,7 @@ import { ClientFactory } from "../factory/client-factory";
 import { LogLevelChecker } from "../service/log-level-checker"
 /**
  * Decorator to inject a logger-instance into an instance-variable.
+ * 
  * @param loggerClass The Class of the Logger, that shall be used. Leave empty to use the default-logger.
  */
 export function GetLogger<T extends ILogger>(loggerClass?: new () => T) {

@@ -16,4 +16,5 @@ export interface IEndpoint {
      * 
      */
     setUrl(url: string): void;
+    
 }

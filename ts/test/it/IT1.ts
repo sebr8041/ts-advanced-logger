@@ -14,12 +14,13 @@ import { EndpointFactory } from "../../main/factory/endpoint-factory";
 import { BufferedAjaxEndpoint } from "../../main/rv/endpoint/buffered-ajax-endpoint";
 import { JsonRvLogConverter } from "../../main/rv/converter/json-rv-log-converter"
 import { AjaxEndpoint } from "../../main/rv/endpoint/ajax-endpoint";
+
 /**
  * set default endpoint global
  */
 let myEndpoint = new BufferedAjaxEndpoint(3)
 myEndpoint.setConverter(new JsonRvLogConverter())
-myEndpoint.setUrl("http://localhost")
+myEndpoint.setUrl("http://localhost:8080/logger")
 EndpointFactory.setDefaultEndpoint(myEndpoint);
 
 class MyLogger implements ILogger {
@@ -169,7 +170,12 @@ class MyClassForRV {
 
     @test public "Method called RVMethod takeObject"() {
         let myClass = new MyClassForRV()
-
+        console.log("########################################################")
+        console.log("Wetrt: ${__myKey}")
+        console.log('json', jsona.config.myKey)
+        
+        console.log("########################################################")
+        
         myClass.takeObj(myClass)
         myClass.takeObj(myClass)
         myClass.takeObj(myClass)
