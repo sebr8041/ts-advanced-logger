@@ -172,7 +172,6 @@ class MyClassForRV {
         let myClass = new MyClassForRV()
         console.log("########################################################")
         console.log("Wetrt: ${__myKey}")
-        console.log('json', jsona.config.myKey)
         
         console.log("########################################################")
         
