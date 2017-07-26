@@ -5,7 +5,7 @@ import { IRemoteLoggerMessage } from "./i-remote-logger-message"
 import { LogLevelEnum } from "../enum/log-level-enum"
 import { ClientService } from "./client-service"
 import { BufferService } from "./buffer-service"
-
+import { LoggerConfig } from "../config/config"
 export class BufferedRemoteLogger extends LoggerWithChecker {
 
     private static serverUrl: string = null;
@@ -16,9 +16,13 @@ export class BufferedRemoteLogger extends LoggerWithChecker {
 
     private static maxSize: number = 10;
 
+
     
     constructor(size?: number) {
         super()
+
+        BufferedRemoteLogger.serverUrl = LoggerConfig.getLoggerConfig().serverEnpoint
+
         if (size === undefined || size === null) {
             this.buffer = new BufferService(BufferedRemoteLogger.maxSize, true)
         } else {
