@@ -135,7 +135,8 @@ Using this configuration, the logs will be sent as a JSON-Array using a HTTP-POS
 ```json
 [
     {   
-        "timestamp":"2017-07-26T13:26:51.236Z","clientId":"1d4b182f-b0b5-4c84-a696-b364e8a55910",
+        "timestamp":"2017-07-26T13:26:51.236Z",
+        "clientId":"1d4b182f-b0b5-4c84-a696-b364e8a55910",
         "logNumber":3,
         "methodName":"BarClass.sumUp",
         "arguments":[10, 5],
