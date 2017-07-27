@@ -50,20 +50,14 @@ This Chapter shows how to configure all these features.
 There is a Default-Configuration, that simply can be extended by your own Configuration. Lets see how to set the Log-Level for aboved FooClass to warn, by extending the Default-Configuration.
 
 ```ts
-import { DefaultLoggerConfig, ILogLevelRule, LogLevelEnum, ConsoleLogger, ILogger } from "ts-advanced-logger"
+import { DefaultLoggerConfig, ILogLevelRule, LogLevelEnum} from "ts-advanced-logger"
 
 class MyConfig extends DefaultLoggerConfig {
     rules: ILogLevelRule[] = [{
         className: "FooClass",
         logLevel: LogLevelEnum.WARN
     }]
- 
-     // useing normal console logger (alterative is the BufferedRemoteLogger)
-     defaultLoggerClass: ILogger = new ConsoleLogger();
 
-     // only required for BufferedRemoteLogger endpoint to send logs
-     serverEnpoint: string = "http://localhost:8080/logger";
-     bufferSize: number = 5;
 }
 
 // tell the ts-advanced-logger to use your configuration
