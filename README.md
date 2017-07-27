@@ -141,9 +141,6 @@ Using this configuration, the logs will be sent as a JSON-Array using a HTTP-POS
         "arguments":[10, 5],
         "result":15,
         "executionTimeMS":1
-    },
-    {
-        // ...
     }
 ]
 ```
