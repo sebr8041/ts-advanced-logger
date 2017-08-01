@@ -21,7 +21,7 @@ export interface ILoggerConfig {
  */
 export class DefaultLoggerConfig implements ILoggerConfig {
 
-    defaultLoggerClass: ILogger = new ConsoleLogger();
+    defaultLoggerClass: any = ConsoleLogger;
     bufferSize: number = 5;
     serverEnpoint: string = "http://localhost:8080/logger";
     rules: ILogLevelRule[] = []
