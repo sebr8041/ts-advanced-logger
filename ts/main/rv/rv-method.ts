@@ -35,15 +35,7 @@ class RVMethodObserver implements IMethodObserver {
      * model to save the log information.
      * this will be send to endpoint.
      */
-    private logData: IRvLog = {
-        timestamp: null,
-        clientId: null,
-        logNumber: null,
-        methodName: null,
-        arguments: null,
-        result: null,
-        executionTimeMS: null
-    };
+    private logData: IRvLog = null;
 
     /**
      * injection of endpoint and clientService
@@ -53,6 +45,19 @@ class RVMethodObserver implements IMethodObserver {
     constructor(endpoint: IEndpoint, clientService: ClientService) {
         this.endpoint = endpoint
         this.clientService = clientService
+        this.initEmptyLogData()
+    }
+
+    private initEmptyLogData(){
+        this.logData = {
+            timestamp: null,
+            clientId: null,
+            logNumber: null,
+            methodName: null,
+            arguments: null,
+            result: null,
+            executionTimeMS: null
+        }
     }
 
     /**
@@ -92,7 +97,7 @@ class RVMethodObserver implements IMethodObserver {
     private log(): void {
 
         // format date 
-        this.logData.timestamp = (new Date(this.startTime)).toISOString();
+        this.logData.timestamp = this.startTime
 
         // set client information. client id and sequence number
         this.logData.clientId = this.clientService.getClientId()
@@ -100,20 +105,12 @@ class RVMethodObserver implements IMethodObserver {
 
         // send information to endpoint
         this.endpoint.provide(this.logData)
+        this.initEmptyLogData()
     }
 
 }
 
-/*
- @RVMethod({
- withArgs:boolean,
- withResult: boolean,
- setLogger: ILogger,
- clientID: string,
- logNumber: number,
- execTime: number
- })
- */
+
 export function RVMethod<T extends IEndpoint>(endpointClass?: new () => T) {
     let endpointInstance = null;
     if (!endpointClass) {

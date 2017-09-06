@@ -1,6 +1,6 @@
 
 export interface IRvLog {
-    timestamp: string;
+    timestamp: number;
     clientId: string;
     logNumber: number;
     methodName: string;

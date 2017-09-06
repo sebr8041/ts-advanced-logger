@@ -79,6 +79,7 @@ export class BufferService {
      * flush all elements in this buffer
      */
     public flushBuffer() {
+        console.log("flushing buffer in bufferservice:", JSON.stringify(this.elements))
         this.callbacks.map((callback) => callback(this.elements))
         this.elements = []
     }
